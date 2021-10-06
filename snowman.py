@@ -15,6 +15,7 @@ def load_word() -> str:
     secret_word = random.choice(words_list)
     return secret_word
 
+
 def is_word_guessed(secret_word: str, letters_guessed: list) -> bool:
     '''
     A function that checks if all the letters of the secret word have been guessed.
@@ -24,11 +25,11 @@ def is_word_guessed(secret_word: str, letters_guessed: list) -> bool:
     Returns: 
         bool: True only if all the letters of secret_word are in letters_guessed, False otherwise
     '''
-    # TODO: Loop through the letters in the secret_word and check if a letter is not in lettersGuessed
     for letter in secret_word:
         if letter not in letters_guessed:
             return False
     return True
+
 
 def get_guessed_word(secret_word: str, letters_guessed: list) -> str:
     '''
@@ -39,8 +40,6 @@ def get_guessed_word(secret_word: str, letters_guessed: list) -> str:
     Returns: 
         string: letters and underscores.  For letters in the word that the user has guessed correctly, the string should contain the letter at the correct position.  For letters in the word that the user has not yet guessed, shown an _ (underscore) instead.
     '''
-
-    #TODO: Loop through the letters in secret word and build a string that shows the letters that have been guessed correctly so far that are saved in letters_guessed and underscores for the letters that have not been guessed yet
     guessed_word = ''
     for letter in secret_word:
         if letter in letters_guessed:
@@ -48,6 +47,7 @@ def get_guessed_word(secret_word: str, letters_guessed: list) -> str:
         else:
             guessed_word += '_'
     return guessed_word
+
 
 def is_guess_in_word(guess: str, secret_word: str) -> bool:
     '''
@@ -58,10 +58,7 @@ def is_guess_in_word(guess: str, secret_word: str) -> bool:
     Returns:
         bool: True if the guess is in the secret_word, False otherwise
     '''
-    #TODO: check if the letter guess is in the secret word
     return True if guess in secret_word else False
-
-
 
 
 def snowman(secret_word: str):
@@ -70,11 +67,14 @@ def snowman(secret_word: str):
     Args:
       secret_word (string): the secret word to guess.
     '''
-    #TODO: show the player information about the game according to the project spec
     print(f'Welcome to Snowman!\nThe Secret word contains: {len(secret_word)} letters')
     print('You have 7 incorrect guesses before your guesses run out! Please enter ONE letter per round!')
     print('----------------------------------------------')
     #TODO: Ask the player to guess one letter per round and check that it is only one letter
+    guesses = 7
+    lettter_guess = input('Enter a letter: ')
+    if len(lettter_guess) > 1:
+        print('Please only enter ONE letter at a time.')
 
     #TODO: Check if the guessed letter is in the secret or not and give the player feedback
 
