@@ -64,16 +64,16 @@ def is_guess_in_word(guess: str, secret_word: str) -> bool:
 
 
 
-def snowman(secret_word):
+def snowman(secret_word: str):
     '''
     A function that controls the game of spaceman. Will start spaceman in the command line.
     Args:
       secret_word (string): the secret word to guess.
     '''
-
-
     #TODO: show the player information about the game according to the project spec
-
+    print(f'Welcome to Snowman!\nThe Secret word contains: {len(secret_word)} letters')
+    print('You have 7 incorrect guesses before your guesses run out! Please enter ONE letter per round!')
+    print('----------------------------------------------')
     #TODO: Ask the player to guess one letter per round and check that it is only one letter
 
     #TODO: Check if the guessed letter is in the secret or not and give the player feedback
