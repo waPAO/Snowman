@@ -30,7 +30,7 @@ def is_word_guessed(secret_word: str, letters_guessed: list) -> bool:
             return False
     return True
 
-def get_guessed_word(secret_word, letters_guessed):
+def get_guessed_word(secret_word: str, letters_guessed: list) -> str:
     '''
     A function that is used to get a string showing the letters guessed so far in the secret word and underscores for letters that have not been guessed yet.
     Args: 
@@ -41,9 +41,13 @@ def get_guessed_word(secret_word, letters_guessed):
     '''
 
     #TODO: Loop through the letters in secret word and build a string that shows the letters that have been guessed correctly so far that are saved in letters_guessed and underscores for the letters that have not been guessed yet
-
-    pass
-
+    guessed_word = ''
+    for letter in secret_word:
+        if letter in letters_guessed:
+            guessed_word += letter
+        else:
+            guessed_word += '_'
+    return guessed_word
 
 def is_guess_in_word(guess, secret_word):
     '''
@@ -86,4 +90,4 @@ def snowman(secret_word):
 
 #These function calls that will start the game
 secret_word = load_word()
-#snowman(secret_word)
+snowman(secret_word)
