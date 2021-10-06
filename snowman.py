@@ -1,6 +1,6 @@
 import random
 
-def load_word():
+def load_word() -> str:
     '''
     A function that reads a text file of words and randomly selects one to use as the secret word
         from the list.
@@ -15,7 +15,7 @@ def load_word():
     secret_word = random.choice(words_list)
     return secret_word
 
-def is_word_guessed(secret_word, letters_guessed):
+def is_word_guessed(secret_word: str, letters_guessed: list) -> bool:
     '''
     A function that checks if all the letters of the secret word have been guessed.
     Args:
@@ -25,7 +25,10 @@ def is_word_guessed(secret_word, letters_guessed):
         bool: True only if all the letters of secret_word are in letters_guessed, False otherwise
     '''
     # TODO: Loop through the letters in the secret_word and check if a letter is not in lettersGuessed
-    pass
+    for letter in secret_word:
+        if letter not in letters_guessed:
+            return False
+    return True
 
 def get_guessed_word(secret_word, letters_guessed):
     '''
@@ -83,4 +86,4 @@ def snowman(secret_word):
 
 #These function calls that will start the game
 secret_word = load_word()
-snowman(secret_word)
+#snowman(secret_word)
