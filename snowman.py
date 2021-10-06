@@ -49,7 +49,7 @@ def get_guessed_word(secret_word: str, letters_guessed: list) -> str:
             guessed_word += '_'
     return guessed_word
 
-def is_guess_in_word(guess, secret_word):
+def is_guess_in_word(guess: str, secret_word: str) -> bool:
     '''
     A function to check if the guessed letter is in the secret word
     Args:
@@ -59,8 +59,7 @@ def is_guess_in_word(guess, secret_word):
         bool: True if the guess is in the secret_word, False otherwise
     '''
     #TODO: check if the letter guess is in the secret word
-
-    pass
+    return True if guess in secret_word else False
 
 
 
