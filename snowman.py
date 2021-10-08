@@ -67,11 +67,10 @@ def snowman(secret_word: str):
     Args:
       secret_word (string): the secret word to guess.
     '''
+    guesses = len(secret_word)
     print(f'Welcome to Snowman!\nThe Secret word contains: {len(secret_word)} letters')
-    print('You have 7 incorrect guesses before your guesses run out! Please enter ONE letter per round!')
+    print(f'You have {str(guesses)} incorrect guesses before your guesses run out! Please enter ONE letter per round!')
     print('----------------------------------------------')
-    #TODO: Ask the player to guess one letter per round and check that it is only one letter
-    guesses = 7
     guessed_letters = []
     letters = 'abcdefghijklmnopqrstuvwxyz'
     letter_guess = input('Enter a letter: ')
@@ -79,10 +78,11 @@ def snowman(secret_word: str):
         if len(letter_guess) > 1:
             print('Please only enter ONE letter at a time.')
             letter_guess = input('Enter a letter: ')
+            continue
         elif letter_guess in guessed_letters:
             print('You have already guessed that letter! Try again')
             letter_guess = input('Enter a letter: ')
-    #TODO: Check if the guessed letter is in the secret or not and give the player feedback
+            continue
         if is_guess_in_word(letter_guess, secret_word):
             guessed_letters.append(letter_guess)
             letters = letters.replace(letter_guess, '')
@@ -91,21 +91,22 @@ def snowman(secret_word: str):
             guessed_letters.append(letter_guess)
             letters = letters.replace(letter_guess, '')
             guesses -= 1
+            if guesses == 0:
+                print('Sorry you did not win, try again')
+                print(f'The word was: {secret_word}')
+                break
             print('Sorry your guess was not in the word, try again')
             print(f'You have {str(guesses)} incorrect guesses left')
-    #TODO: show the guessed word so far
+
         word_so_far = get_guessed_word(secret_word, guessed_letters)
         print(f'Guessed so far: {word_so_far}')
         print(f'These letters have not been guessed yet: {letters}')
-    #TODO: check if the game has been won or lost
         if is_word_guessed(secret_word, guessed_letters):
             print('You won!!!!')
             break
         else:
             print('----------------------------------------------')
             letter_guess = input('Enter a letter: ')
-
-
 
 
 
