@@ -72,12 +72,21 @@ def snowman(secret_word: str):
     print('----------------------------------------------')
     #TODO: Ask the player to guess one letter per round and check that it is only one letter
     guesses = 7
-    lettter_guess = input('Enter a letter: ')
-    if len(lettter_guess) > 1:
-        print('Please only enter ONE letter at a time.')
-
+    guessed_letters = []
+    letters = 'abcdefghijklmnopqrstuvwxyz'
+    letter_guess = input('Enter a letter: ')
+    while True:
+        if len(letter_guess) > 1:
+            print('Please only enter ONE letter at a time.')
+            letter_guess = input('Enter a letter: ')
     #TODO: Check if the guessed letter is in the secret or not and give the player feedback
-
+        if is_guess_in_word(letter_guess, secret_word):
+            guessed_letters.append(letter_guess)
+            print('Your guess appears in the word!')
+        else:
+            guessed_letters.append(letter_guess)
+            guesses -= 1
+            print(f'You have {str(guesses)} incorrect guesses left')
     #TODO: show the guessed word so far
 
     #TODO: check if the game has been won or lost
